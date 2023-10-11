@@ -6,7 +6,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val repository: QuoteRepository) : ViewModel() {
+class MainViewModel(private val repository: QuoteRepository,
+                    private val favoriteDao: FavoriteDao) : ViewModel() {
 
     init {
         viewModelScope.launch(Dispatchers.IO){
@@ -20,5 +21,17 @@ class MainViewModel(private val repository: QuoteRepository) : ViewModel() {
     suspend fun getQuotes(page: Int) {
         // Use the repository to fetch data from the Pixabay API
         repository.getQuotes(page)
+    }
+
+    val favoriteQuotes: LiveData<List<FavoriteHit>> = repository.favoriteQuotes
+
+    suspend fun insertFavorite(favorite: FavoriteHit) {
+        favoriteDao.insertFavorite(favorite)
+    }
+
+    suspend fun getAllFavorites() {
+        // Retrieve all favorite images from the database
+        val favorites = favoriteDao.getAllFavorites()
+        // Handle the retrieved data as needed
     }
 }
