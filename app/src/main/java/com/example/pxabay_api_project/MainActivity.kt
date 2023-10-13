@@ -1,5 +1,6 @@
 package com.example.pxabay_api_project
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +25,14 @@ class MainActivity : AppCompatActivity() {
 
         val repository = (application as QuoteApplication).quoteRepository
         val favoriteDao = repository.quoteDatabase.favoriteDao() // Retrieve the favoriteDao
+
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+
+        fab.setOnClickListener {
+            // Handle FAB click to open the new activity
+            val intent = Intent(this, NewActivity::class.java)
+            startActivity(intent)
+        }
 
         mainViewModel = ViewModelProvider(this, MainViewModelFactory(repository, favoriteDao)).get(MainViewModel::class.java)
 
@@ -65,11 +75,6 @@ class MainActivity : AppCompatActivity() {
                 )
                 mainViewModel.insertFavorite(favoriteHit)
 
-            } else {
-
-                // Update the favorite button's icon
-//                quote.isFavorite = true
-//                quoteAdapter.notifyItemChanged(position)
             }
         }
     }

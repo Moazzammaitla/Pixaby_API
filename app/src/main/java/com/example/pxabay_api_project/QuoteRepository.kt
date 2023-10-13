@@ -36,4 +36,8 @@ class QuoteRepository(
     suspend fun insertFavorite(favorite: FavoriteHit) {
         quoteDatabase.favoriteDao().insertFavorite(favorite)
     }
+
+    suspend fun removeFavorite(favoriteHit: FavoriteHit) {
+        quoteDatabase.favoriteDao().deleteFavorite(favoriteHit)
+    }
 }

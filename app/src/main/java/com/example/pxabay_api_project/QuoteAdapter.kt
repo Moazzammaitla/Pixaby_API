@@ -44,8 +44,6 @@ class QuoteAdapter(
         // Set the favorite button click listener
         holder.favoriteButton.setOnClickListener {
             val isFavorite = !quote.isFavorite
-//            Toast.makeText(context,"$isFavorite", Toast.LENGTH_LONG).show()
-
             onFavoriteClick(position, isFavorite)
         }
 
