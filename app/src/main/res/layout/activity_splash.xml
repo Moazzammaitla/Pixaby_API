@@ -12,6 +12,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="200dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:contentDescription="Album Cover"
         android:src="@drawable/images" />
 </RelativeLayout>
