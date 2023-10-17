@@ -9,18 +9,18 @@ import kotlinx.coroutines.launch
 class MainViewModel(private val repository: QuoteRepository,
                     private val favoriteDao: FavoriteDao) : ViewModel() {
 
-    init {
+    /*init {
         viewModelScope.launch(Dispatchers.IO){
-            repository.getQuotes(1)
+            repository.getQuotes()
         }
-    }
+    }*/
 
     val quotes : LiveData<QuoteList>
         get() = repository.quotes
 
-    suspend fun getQuotes(page: Int) {
+    suspend fun getQuotes(category: String,page: Int) {
         // Use the repository to fetch data from the Pixabay API
-        repository.getQuotes(page)
+        repository.getQuotes(category,1)
     }
 
     val favoriteQuotes: LiveData<List<FavoriteHit>> = repository.favoriteQuotes

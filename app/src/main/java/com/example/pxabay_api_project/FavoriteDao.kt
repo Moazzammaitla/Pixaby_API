@@ -11,7 +11,7 @@ import androidx.room.Query
 interface FavoriteDao {
 
     @Query("SELECT * FROM favorite")
-    fun getAllFavorites(): LiveData<List<FavoriteHit>> // Add the LiveData return type
+    fun getAllFavorites(): LiveData<List<FavoriteHit>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFavorite(favorite: FavoriteHit)

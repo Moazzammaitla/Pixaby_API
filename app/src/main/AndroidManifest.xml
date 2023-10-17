@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Pxabay_API_Project"
         tools:targetApi="31">
         <activity
+            android:name=".DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".NewActivity"
             android:exported="false" />
         <activity

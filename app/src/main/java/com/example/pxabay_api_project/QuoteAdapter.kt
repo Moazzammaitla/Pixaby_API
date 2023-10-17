@@ -1,6 +1,7 @@
 package com.example.pxabay_api_project
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,7 @@ class QuoteAdapter(
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
         val likesTextView: TextView = itemView.findViewById(R.id.likesTextView)
         val commentsTextView: TextView = itemView.findViewById(R.id.commentsTextView)
-        val favoriteButton: ImageButton = itemView.findViewById(R.id.favoriteButton) // Add this line
+        val favoriteButton: ImageButton = itemView.findViewById(R.id.favoriteButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuoteViewHolder {
@@ -54,6 +55,17 @@ class QuoteAdapter(
             R.drawable.baseline_favorite_border_24 // Use the outlined heart icon for non-favorites
         }
         holder.favoriteButton.setImageResource(favoriteIcon)
+
+        // Set a click listener for the image view to open the DetailActivity
+        holder.imageView.setOnClickListener {
+            // Create an Intent to open the DetailActivity
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("imageURL", quote.largeImageURL)
+            intent.putExtra("likes", quote.likes)
+            intent.putExtra("comments", quote.comments)
+            intent.putExtra("downloads", quote.downloads)
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -68,9 +80,5 @@ class QuoteAdapter(
 
     fun getItemAtPosition(position: Any): Hit {
         return quotes[position as Int]
-    }
-
-    fun notifyItemChanged(position: Any) {
-
     }
 }

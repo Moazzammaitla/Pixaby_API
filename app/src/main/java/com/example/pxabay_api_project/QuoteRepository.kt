@@ -16,10 +16,10 @@ class QuoteRepository(
     val quotes: LiveData<QuoteList>
         get() = quotesLiveData
 
-    suspend fun getQuotes(page: Int) {
+    suspend fun getQuotes(category: String,page: Int) {
 
         if (NetworkUtils.isInternetAvailable(applicationContext)) {
-            val result = quoteService.getQuotes(page)
+            val result = quoteService.getQuotes(category,page)
             if (result?.body() != null) {
                 quoteDatabase.quoteDao().addQuotes(result.body()!!.hits)
                 quotesLiveData.postValue(result.body())
