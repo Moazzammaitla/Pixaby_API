@@ -14,7 +14,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class MainActivity : AppCompatActivity() {
+class MainActivity: AppCompatActivity() {
 
     lateinit var mainViewModel: MainViewModel
     lateinit var recyclerView: RecyclerView
@@ -55,30 +55,37 @@ class MainActivity : AppCompatActivity() {
         // Set click listeners for category buttons
         backgroundsButton.setOnClickListener {
             loadCategory("backgrounds")
+            changeButtonColor(backgroundsButton)
         }
 
         fashionButton.setOnClickListener {
             loadCategory("fashion")
+            changeButtonColor(fashionButton)
         }
 
         natureButton.setOnClickListener {
             loadCategory("nature")
+            changeButtonColor(natureButton)
         }
 
         scienceButton.setOnClickListener {
             loadCategory("science")
+            changeButtonColor(scienceButton)
         }
 
         travelButton.setOnClickListener {
             loadCategory("travel")
+            changeButtonColor(travelButton)
         }
 
         animalsButton.setOnClickListener {
             loadCategory("animals")
+            changeButtonColor(animalsButton)
         }
 
         foodButton.setOnClickListener {
             loadCategory("food")
+            changeButtonColor(foodButton)
         }
 
         mainViewModel.quotes.observe(this, Observer {
@@ -93,6 +100,25 @@ class MainActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
         }
+    }
+
+    private fun changeButtonColor(button: Button) {
+        // Reset the background color of all buttons to the default color
+        val defaultColor = getColor(com.google.android.material.R.color.design_default_color_primary)
+        val buttons = listOf<Button>(
+            findViewById(R.id.backgroundsButton),
+            findViewById(R.id.fashionButton),
+            findViewById(R.id.natureButton),
+            findViewById(R.id.scienceButton),
+            findViewById(R.id.travelButton),
+            findViewById(R.id.animalsButton),
+            findViewById(R.id.foodButton)
+        )
+        buttons.forEach { it.setBackgroundColor(defaultColor) }
+
+        // Change the background color of the clicked button
+        val selectedColor = getColor(com.google.android.material.R.color.m3_chip_text_color)
+        button.setBackgroundColor(selectedColor)
     }
 
     private fun onFavoriteClick(position: Int, isFavorite: Boolean) {

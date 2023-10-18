@@ -25,6 +25,7 @@
         android:layout_below="@+id/titleTextView"
         android:id="@+id/scroll"
         android:padding="16dp"
+        android:scrollbars="none"
         >
 
         <LinearLayout
@@ -70,7 +71,6 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/foodButton"
                 android:text="food" />
-
 
         </LinearLayout>
     </HorizontalScrollView>

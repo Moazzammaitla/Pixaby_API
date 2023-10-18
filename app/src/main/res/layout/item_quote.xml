@@ -27,14 +27,22 @@
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Likes: " />
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:text="Likes: "
+                android:textStyle="bold"
+                android:textSize="15sp"/>
 
             <TextView
                 android:id="@+id/commentsTextView"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Comments: " />
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:text="Comments: "
+                android:textStyle="bold"
+                android:textSize="15sp"/>
 
             <!-- Favorite button (star icon) -->
             <ImageButton
@@ -42,7 +50,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/baseline_favorite_border_24" />
+                android:layout_marginTop="5dp"
+                android:src="@drawable/baseline_favorite_border_24"
+                android:background="@android:color/transparent" />
         </LinearLayout>
 
     </LinearLayout>

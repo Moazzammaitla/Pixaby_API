@@ -1,6 +1,5 @@
 package com.example.pxabay_api_project
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -31,7 +30,6 @@ class DetailActivity : AppCompatActivity() {
         // Display the likes and comments
         detailLikesTextView.text = "Likes: $likes"
         detailCommentsTextView.text = "Comments: $comments"
-
 
         // Display the download details
         detailDownloadTextView.text = "Download Details: $downloads"

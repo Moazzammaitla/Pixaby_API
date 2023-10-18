@@ -28,7 +28,7 @@ data class Hit(
     val webformatHeight: Int,
     val webformatURL: String,
     val webformatWidth: Int,
-    val isFavorite: Boolean,
+    var isFavorite: Boolean = false
 
 
 

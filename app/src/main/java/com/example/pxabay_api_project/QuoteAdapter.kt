@@ -2,6 +2,7 @@ package com.example.pxabay_api_project
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,15 +47,18 @@ class QuoteAdapter(
         holder.favoriteButton.setOnClickListener {
             val isFavorite = !quote.isFavorite
             onFavoriteClick(position, isFavorite)
-        }
 
-        // Set the favorite button's icon based on the isFavorite state
-        val favoriteIcon = if (quote.isFavorite) {
-            R.drawable.favorite // Use the filled heart icon for favorites
-        } else {
-            R.drawable.baseline_favorite_border_24 // Use the outlined heart icon for non-favorites
+            // Update the isFavorite status in the quote
+            quote.isFavorite = isFavorite
+
+            // Set the favorite button's icon based on the updated isFavorite state
+            val favoriteIcon = if (isFavorite) {
+                R.drawable.showfvrt // Use the filled heart icon for favorites
+            } else {
+                R.drawable.baseline_favorite_border_24 // Use the outlined heart icon for non-favorites
+            }
+            holder.favoriteButton.setImageResource(favoriteIcon)
         }
-        holder.favoriteButton.setImageResource(favoriteIcon)
 
         // Set a click listener for the image view to open the DetailActivity
         holder.imageView.setOnClickListener {
